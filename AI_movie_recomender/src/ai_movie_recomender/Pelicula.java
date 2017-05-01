@@ -11,7 +11,7 @@ package ai_movie_recomender;
  */
 public class Pelicula 
 {
-    /*
+    
     String color;
     String director_name;
     double num_critic_for_reviews;
@@ -40,7 +40,7 @@ public class Pelicula
     double imdb_score;
     double aspect_ratio;
     double movie_facebook_likes;
-    */
+    
     
     
 }
