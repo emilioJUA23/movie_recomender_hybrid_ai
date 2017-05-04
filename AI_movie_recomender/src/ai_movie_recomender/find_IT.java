@@ -4,6 +4,12 @@
  * and open the template in the editor.
  */
 package ai_movie_recomender;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -102,15 +108,47 @@ public class find_IT extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     KNN_map mapa = new KNN_map(3,19);
+    Pelicula dummie = new Pelicula("","",0.0,0.0,0.0,0.0,"",0.0,0.0,"","","",0.0,0.0,"",0.0,"","",0.0,"","","",0.0,0.0,0.0,0.0,0.0,0.0);
+    List<Pelicula> peliculas = new ArrayList();
+    double[] maximos = new double[8];
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
             String genero = this.tbgenero.getText();
             String color = this.tbcolor.getText();
+            String archivo="/root/Documentos/githubrepo/movie_recomender_hybrid_ai/movie_metadata_unknown_add.csv";
+            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            String linea = reader.readLine();
+            linea = reader.readLine();
+            while(linea!=null)
+            {
+                Pelicula nueva_pelicula = dummie.pelicula_de_archivo(linea);
+                if (nueva_pelicula.have_genre(genero)&&nueva_pelicula.color.equals(color))
+                {
+                  peliculas.add(nueva_pelicula);
+                }
+                linea=reader.readLine();
+            }
+            maximos[0]=peliculas.get(0).director_facebook_likes;
+            maximos[1]=peliculas.get(0).actor_3_facebook_likes;
+            maximos[2]=peliculas.get(0).actor_1_facebook_likes;
+            maximos[3]=peliculas.get(0).gross;
+            maximos[4]=peliculas.get(0).cast_total_facebook_likes;
+            maximos[5]=peliculas.get(0).imdb_score;
+            maximos[6]=peliculas.get(0).aspect_ratio;
+            maximos[7]=peliculas.get(0).movie_facebook_likes;
+            for (int i = 0; i < peliculas.size(); i++)
+            {
+             peliculas.get(i).calificar(maximos);
+            }
+            
+            
+            
         }
         catch(Exception ex)
         {
-        
+           String a = ex.getCause().getMessage();
+           int c =0;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
