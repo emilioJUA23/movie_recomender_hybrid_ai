@@ -15,7 +15,8 @@ public class AI_movie_recomender {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       find_IT form = new find_IT();
+       form.setVisible(true);
     }
     
 }
