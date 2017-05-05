@@ -47,6 +47,13 @@ public class find_IT extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         lb_imdb_link = new javax.swing.JLabel();
         lb_lis_pos = new javax.swing.JLabel();
+        lb_director = new javax.swing.JLabel();
+        jlabel4 = new javax.swing.JLabel();
+        lb_principal_actors = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        tb_director = new javax.swing.JTextField();
+        tb_keyword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("fint_IT");
@@ -95,7 +102,17 @@ public class find_IT extends javax.swing.JFrame {
 
         lb_imdb_link.setText("           ");
 
-        lb_lis_pos.setText("jLabel4");
+        lb_lis_pos.setText("Director:");
+
+        lb_director.setText("        ");
+
+        jlabel4.setText("Principal Actors");
+
+        lb_principal_actors.setText("         ");
+
+        jLabel4.setText("director");
+
+        jLabel7.setText("Keyword");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,61 +122,95 @@ public class find_IT extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(lb_movie_title))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_like, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                                .addComponent(btn_dislike))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(tbcolor, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                                     .addComponent(tbgenero))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_sugerir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addGap(42, 42, 42)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel7))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tb_keyword)
+                                    .addComponent(tb_director)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 121, Short.MAX_VALUE)
+                                .addComponent(btn_like, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104)
+                                .addComponent(btn_dislike)
+                                .addGap(48, 48, 48))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6))
+                            .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_imdb_link))
-                    .addComponent(lb_lis_pos))
-                .addContainerGap(72, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lb_imdb_link)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lb_movie_title)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(lb_principal_actors))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lb_lis_pos)
+                                .addGap(37, 37, 37)
+                                .addComponent(lb_director))
+                            .addComponent(btn_sugerir, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tbgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                    .addComponent(jLabel4)
+                    .addComponent(tb_director, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tbcolor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(btn_sugerir))
+                    .addComponent(jLabel7)
+                    .addComponent(tb_keyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(lb_movie_title))
-                .addGap(34, 34, 34)
+                    .addComponent(lb_movie_title, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(lb_imdb_link)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(lb_imdb_link))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_lis_pos)
+                    .addComponent(lb_director))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlabel4)
+                    .addComponent(lb_principal_actors))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btn_sugerir)
                 .addGap(18, 18, 18)
-                .addComponent(lb_lis_pos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_like)
                     .addComponent(btn_dislike))
@@ -226,6 +277,10 @@ public class find_IT extends javax.swing.JFrame {
     Pelicula sugerencia;
     private void btn_sugerirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sugerirActionPerformed
         //Se va a calcular y sugerir la primera pelicula 
+        if (!btn_sugerir.getText().equals("sugerir"))
+        {
+            btn_sugerir.setText("sugerir");
+        }
         for (int i = 0; i < peliculas.size(); i++)
         {
             if (mapa.prediccion(peliculas.get(i).punto()))
@@ -237,6 +292,8 @@ public class find_IT extends javax.swing.JFrame {
         }
         lb_movie_title.setText(sugerencia.movie_title);
         lb_imdb_link.setText(sugerencia.movie_imdb_link);
+        lb_director.setText(sugerencia.director_name);
+        lb_principal_actors.setText(sugerencia.actor_1_name+","+sugerencia.actor_2_name+","+sugerencia.actor_3_name);
     }//GEN-LAST:event_btn_sugerirActionPerformed
 
     private void btn_likeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_likeActionPerformed
@@ -306,11 +363,18 @@ public class find_IT extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jlabel4;
+    private javax.swing.JLabel lb_director;
     private javax.swing.JLabel lb_imdb_link;
     private javax.swing.JLabel lb_lis_pos;
     private javax.swing.JLabel lb_movie_title;
+    private javax.swing.JLabel lb_principal_actors;
+    private javax.swing.JTextField tb_director;
+    private javax.swing.JTextField tb_keyword;
     private javax.swing.JTextField tbcolor;
     private javax.swing.JTextField tbgenero;
     // End of variables declaration//GEN-END:variables

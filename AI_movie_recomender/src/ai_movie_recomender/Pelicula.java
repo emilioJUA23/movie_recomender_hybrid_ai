@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package ai_movie_recomender;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
 /**
  *
  * @author root
@@ -41,6 +42,9 @@ public class Pelicula
     double aspect_ratio;
     double movie_facebook_likes;
     double calificacion_inicial;
+    String archivo_directores;
+    String archivo_actores;
+    String archivo_generos;
     
     public Pelicula(String color, String director_name, double num_critic_for_reviews,
             double duration, double director_facebook_likes, double actor_3_facebook_likes,
@@ -135,23 +139,88 @@ public class Pelicula
     
     public KNN_point punto()
     {
-        double [] coordenadas = new double[15];
-        coordenadas[0]=0;
-        coordenadas[1]=this.duration;
-        coordenadas[2]=this.director_facebook_likes;
-        coordenadas[3]=this.actor_3_facebook_likes;
-        coordenadas[4]=0;
-        coordenadas[5]=this.actor_1_facebook_likes;
-        coordenadas[6]=this.gross;
-        coordenadas[7]=0;
-        coordenadas[8]=0;
-        coordenadas[9]=this.cast_total_facebook_likes;
-        coordenadas[10]=0;
-        coordenadas[11]=this.actor_2_facebook_likes;
-        coordenadas[12]=this.imdb_score;
-        coordenadas[13]=this.aspect_ratio;
-        coordenadas[14]=this.movie_facebook_likes;
+        double[] coordenadas = new double[15];
+        for (int i = 0; i < 15; i++) 
+        {
+         coordenadas[i]=0;   
+        }
+        try 
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(archivo_directores));
+            String linea = reader.readLine();
+            int cont =0;
+             while(linea!=null)
+            {
+                if (this.director_name.equals(linea))
+                {
+                    coordenadas[0]=cont;
+                    break;
+                }
+                cont++;
+            }
+            reader = new BufferedReader(new FileReader(archivo_actores));
+            linea = reader.readLine();
+            cont =0;
+            while(linea!=null)
+            {
+                if (this.actor_2_name.equals(linea))
+                {
+                    coordenadas[4]=cont;
+                }
+                if (this.actor_1_name.equals(linea))
+                {
+                    coordenadas[8]=cont;
+                }
+                if (this.actor_3_name.equals(linea))
+                {
+                    coordenadas[10]=cont;
+                }
+                
+                cont++;
+            }
+            reader = new BufferedReader(new FileReader(archivo_generos));
+            linea = reader.readLine();
+            cont =0;
+            while(linea!=null)
+            {
+                String[] g=this.genres.split("\\|");
+                if (g[0].equals(linea))
+                {
+                    coordenadas[7]=cont;
+                    break;
+                }
+                cont++;
+            }
+            
+        } 
+        catch (Exception ex)
+        {
+             coordenadas[0] = 0;
+             coordenadas[4] = 0;
+             coordenadas[10] = 0;
+             coordenadas[7] = 0;
+             coordenadas[8] = 0;
+        }
+       
+        coordenadas[1] = this.duration;
+        coordenadas[2] = this.director_facebook_likes;
+        coordenadas[3] = this.actor_3_facebook_likes;
+        coordenadas[5] = this.actor_1_facebook_likes;
+        coordenadas[6] = this.gross;
+        coordenadas[9] = this.cast_total_facebook_likes;
+        coordenadas[11] = this.actor_2_facebook_likes;
+        coordenadas[12] = this.imdb_score;
+        coordenadas[13] = this.aspect_ratio;
+        coordenadas[14] = this.movie_facebook_likes;
         return (new KNN_point(coordenadas));
+       
+    }
+    
+    public void cargar_archivos( String archivo_directores,String archivo_actores,String archivo_generos)
+    {
+        this.archivo_actores=archivo_actores;
+        this.archivo_directores=archivo_directores;
+        this.archivo_generos=archivo_generos;
     }
     
 }
