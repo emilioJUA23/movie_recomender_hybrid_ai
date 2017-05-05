@@ -224,6 +224,10 @@ public class find_IT extends javax.swing.JFrame {
     Pelicula dummie = new Pelicula("","",0.0,0.0,0.0,0.0,"",0.0,0.0,"","","",0.0,0.0,"",0.0,"","",0.0,"","","",0.0,0.0,0.0,0.0,0.0,0.0);
     List<Pelicula> peliculas = new ArrayList();
     double[] maximos = new double[8];
+    String archivo_principal="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\movie_metadata_unknown_add.csv";
+    String archivo_directore="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\termometro_directores.txt";
+    String archivo_actores = "C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\termometro_actores.txt";
+    String archivo_generos ="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\TermometroGeneros.txt";
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
@@ -238,6 +242,7 @@ public class find_IT extends javax.swing.JFrame {
             while(linea!=null)
             {
                 Pelicula nueva_pelicula = dummie.pelicula_de_archivo(linea);
+                nueva_pelicula.cargar_archivos(archivo_directore, archivo_actores, archivo_generos);
                 if (nueva_pelicula.have_genre(genero)&&nueva_pelicula.color.equals(color))
                 {
                   peliculas.add(nueva_pelicula);
@@ -281,14 +286,21 @@ public class find_IT extends javax.swing.JFrame {
         {
             btn_sugerir.setText("sugerir");
         }
+        Boolean t = false;
         for (int i = 0; i < peliculas.size(); i++)
         {
             if (mapa.prediccion(peliculas.get(i).punto()))
             {
+                t=true;
                 sugerencia = peliculas.get(i);
                 peliculas.remove(i);
                 break;
             }
+        }
+        if (!t)
+        {
+            sugerencia = peliculas.get(peliculas.size()-1);
+            peliculas.remove(peliculas.size()-1);
         }
         lb_movie_title.setText(sugerencia.movie_title);
         lb_imdb_link.setText(sugerencia.movie_imdb_link);

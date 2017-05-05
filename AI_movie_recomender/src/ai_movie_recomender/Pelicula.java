@@ -156,6 +156,7 @@ public class Pelicula
                     coordenadas[0]=cont;
                     break;
                 }
+                linea=reader.readLine();
                 cont++;
             }
             reader = new BufferedReader(new FileReader(archivo_actores));
@@ -175,7 +176,7 @@ public class Pelicula
                 {
                     coordenadas[10]=cont;
                 }
-                
+                linea=reader.readLine();
                 cont++;
             }
             reader = new BufferedReader(new FileReader(archivo_generos));
@@ -189,6 +190,7 @@ public class Pelicula
                     coordenadas[7]=cont;
                     break;
                 }
+                linea=reader.readLine();
                 cont++;
             }
             
