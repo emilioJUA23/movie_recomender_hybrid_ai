@@ -135,8 +135,23 @@ public class Pelicula
     
     public KNN_point punto()
     {
-    
-      return null;
+        double [] coordenadas = new double[15];
+        coordenadas[0]=0;
+        coordenadas[1]=this.duration;
+        coordenadas[2]=this.director_facebook_likes;
+        coordenadas[3]=this.actor_3_facebook_likes;
+        coordenadas[4]=0;
+        coordenadas[5]=this.actor_1_facebook_likes;
+        coordenadas[6]=this.gross;
+        coordenadas[7]=0;
+        coordenadas[8]=0;
+        coordenadas[9]=this.cast_total_facebook_likes;
+        coordenadas[10]=0;
+        coordenadas[11]=this.actor_2_facebook_likes;
+        coordenadas[12]=this.imdb_score;
+        coordenadas[13]=this.aspect_ratio;
+        coordenadas[14]=this.movie_facebook_likes;
+        return (new KNN_point(coordenadas));
     }
     
 }

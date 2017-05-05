@@ -38,8 +38,15 @@ public class find_IT extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_like = new javax.swing.JButton();
+        btn_dislike = new javax.swing.JButton();
+        btn_sugerir = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        lb_movie_title = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lb_imdb_link = new javax.swing.JLabel();
+        lb_lis_pos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("fint_IT");
@@ -59,9 +66,36 @@ public class find_IT extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("me gusta");
+        btn_like.setText("me gusta");
+        btn_like.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_likeActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("no me gusta");
+        btn_dislike.setText("no me gusta");
+        btn_dislike.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dislikeActionPerformed(evt);
+            }
+        });
+
+        btn_sugerir.setText("empezar a sugerir");
+        btn_sugerir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_sugerirActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("movie title");
+
+        lb_movie_title.setText("         ");
+
+        jLabel5.setText("movie link");
+
+        lb_imdb_link.setText("           ");
+
+        lb_lis_pos.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,20 +104,35 @@ public class find_IT extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton3))
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(lb_movie_title))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tbcolor, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                            .addComponent(tbgenero))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_like, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                                .addComponent(btn_dislike))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tbcolor, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                    .addComponent(tbgenero))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_sugerir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_imdb_link))
+                    .addComponent(lb_lis_pos))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,26 +146,41 @@ public class find_IT extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tbcolor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(59, 59, 59)
+                    .addComponent(jLabel2)
+                    .addComponent(btn_sugerir))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(121, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(lb_movie_title))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lb_imdb_link)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addComponent(lb_lis_pos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_like)
+                    .addComponent(btn_dislike))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    KNN_map mapa = new KNN_map(3,19);
+    //declaracion de variables de uso general mapa de KNN y Pelicula dummie
+    KNN_map mapa = new KNN_map(3,15);
     Pelicula dummie = new Pelicula("","",0.0,0.0,0.0,0.0,"",0.0,0.0,"","","",0.0,0.0,"",0.0,"","",0.0,"","","",0.0,0.0,0.0,0.0,0.0,0.0);
     List<Pelicula> peliculas = new ArrayList();
     double[] maximos = new double[8];
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
+            //obtencion de valores de filtrado inicial 
             String genero = this.tbgenero.getText();
             String color = this.tbcolor.getText();
-            String archivo="/root/Documentos/githubrepo/movie_recomender_hybrid_ai/movie_metadata_unknown_add.csv";
+            //lectura de archivo
+            String archivo="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\movie_metadata_unknown_add.csv";
             BufferedReader reader = new BufferedReader(new FileReader(archivo));
             String linea = reader.readLine();
             linea = reader.readLine();
@@ -129,6 +193,7 @@ public class find_IT extends javax.swing.JFrame {
                 }
                 linea=reader.readLine();
             }
+            //parametros iniciales para funcion de precalculo
             maximos[0]=peliculas.get(0).director_facebook_likes;
             maximos[1]=peliculas.get(0).actor_3_facebook_likes;
             maximos[2]=peliculas.get(0).actor_1_facebook_likes;
@@ -137,20 +202,66 @@ public class find_IT extends javax.swing.JFrame {
             maximos[5]=peliculas.get(0).imdb_score;
             maximos[6]=peliculas.get(0).aspect_ratio;
             maximos[7]=peliculas.get(0).movie_facebook_likes;
+            //precalculo inicial 
             for (int i = 0; i < peliculas.size(); i++)
             {
              peliculas.get(i).calificar(maximos);
             }
-            
-            
+            //asignacion de valores iniciales en el mapa 
+            peliculas.sort((o1,o2)->Double.compare(o1.calificacion_inicial, o2.calificacion_inicial));
+            mapa.train_point(peliculas.get(0).punto(), false);
+            mapa.train_point(peliculas.get(1).punto(), false);
+            mapa.train_point(peliculas.get(2).punto(), false);
+            mapa.train_point(peliculas.get(peliculas.size()-1).punto(), true);
+            mapa.train_point(peliculas.get(peliculas.size()-2).punto(), true);
+            mapa.train_point(peliculas.get(peliculas.size()-3).punto(), true);
+           
             
         }
         catch(Exception ex)
         {
-           String a = ex.getCause().getMessage();
-           int c =0;
+          
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+    Pelicula sugerencia;
+    private void btn_sugerirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sugerirActionPerformed
+        //Se va a calcular y sugerir la primera pelicula 
+        for (int i = 0; i < peliculas.size(); i++)
+        {
+            if (mapa.prediccion(peliculas.get(i).punto()))
+            {
+                sugerencia = peliculas.get(i);
+                peliculas.remove(i);
+                break;
+            }
+        }
+        lb_movie_title.setText(sugerencia.movie_title);
+        lb_imdb_link.setText(sugerencia.movie_imdb_link);
+    }//GEN-LAST:event_btn_sugerirActionPerformed
+
+    private void btn_likeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_likeActionPerformed
+        // que hacer si una pelicula me parece buena
+        if (sugerencia !=null) 
+        {
+           mapa.train_point(sugerencia.punto(),true);
+        }
+        else
+        {
+        
+        }
+    }//GEN-LAST:event_btn_likeActionPerformed
+
+    private void btn_dislikeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dislikeActionPerformed
+        // que hacer si una pelicula me parece mala
+        if (sugerencia !=null) 
+        {
+           mapa.train_point(sugerencia.punto(),false);
+        }
+        else
+        {
+        
+        }
+    }//GEN-LAST:event_btn_dislikeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,11 +299,18 @@ public class find_IT extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_dislike;
+    private javax.swing.JButton btn_like;
+    private javax.swing.JButton btn_sugerir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lb_imdb_link;
+    private javax.swing.JLabel lb_lis_pos;
+    private javax.swing.JLabel lb_movie_title;
     private javax.swing.JTextField tbcolor;
     private javax.swing.JTextField tbgenero;
     // End of variables declaration//GEN-END:variables

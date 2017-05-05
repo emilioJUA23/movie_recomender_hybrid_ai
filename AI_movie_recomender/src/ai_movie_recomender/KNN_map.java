@@ -44,11 +44,26 @@ public class KNN_map
         return (contador>=0);
     }
     
-    public void train_point(KNN_point n_point)//insertaun punto en nustro mapa
+    public void train_point(KNN_point n_point,Boolean state)//insertaun punto en nustro mapa
     {
         if (n_point.coordenates.length==r_space) 
         {
-            Points.add(n_point);
+            n_point.estado=state;
+            Boolean t =false;
+            for (int i = 0; i < Points.size(); i++) 
+            {
+                if (Points.get(i).distancia(n_point)==0)
+                {
+                   Points.get(i).estado=state;
+                   t=true;
+                   break;
+                }
+            }
+            if (!t)
+            {
+                Points.add(n_point);
+            } 
+           
         }
         else
         {
