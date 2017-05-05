@@ -297,7 +297,7 @@ public class find_IT extends javax.swing.JFrame {
                 break;
             }
         }
-        if (!t)
+        if (!t&&peliculas.size()>0)
         {
             sugerencia = peliculas.get(peliculas.size()-1);
             peliculas.remove(peliculas.size()-1);
