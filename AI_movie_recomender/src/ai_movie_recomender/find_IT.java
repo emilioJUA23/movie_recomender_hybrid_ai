@@ -228,22 +228,27 @@ public class find_IT extends javax.swing.JFrame {
     String archivo_directore="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\termometro_directores.txt";
     String archivo_actores = "C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\termometro_actores.txt";
     String archivo_generos ="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\TermometroGeneros.txt";
+    String archivo_directores_peliculas="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\directors_and_movies.txt";
+    String keywords_relations="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\keywords_Relationship.txt";
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
             //obtencion de valores de filtrado inicial 
             String genero = this.tbgenero.getText();
             String color = this.tbcolor.getText();
+            String director = this.tb_director.getText();
+            String keyword = this.tb_keyword.getText();
+            
             //lectura de archivo
-            String archivo="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\movie_metadata_unknown_add.csv";
-            BufferedReader reader = new BufferedReader(new FileReader(archivo));
+            BufferedReader reader = new BufferedReader(new FileReader(archivo_principal));
             String linea = reader.readLine();
             linea = reader.readLine();
             while(linea!=null)
             {
                 Pelicula nueva_pelicula = dummie.pelicula_de_archivo(linea);
                 nueva_pelicula.cargar_archivos(archivo_directore, archivo_actores, archivo_generos);
-                if (nueva_pelicula.have_genre(genero)&&nueva_pelicula.color.equals(color))
+                if ((nueva_pelicula.have_genre(genero)||genero.equals(""))&&(nueva_pelicula.color.equals(color)||color.equals(""))
+                     &&(nueva_pelicula.director_name.equals(director)||director.equals(""))&&(nueva_pelicula.have_keyword(keyword)||keyword.equals("")))
                 {
                   peliculas.add(nueva_pelicula);
                 }
@@ -313,6 +318,59 @@ public class find_IT extends javax.swing.JFrame {
         if (sugerencia !=null) 
         {
            mapa.train_point(sugerencia.punto(),true);
+            try 
+            {
+                BufferedReader reader = new BufferedReader(new FileReader(archivo_directores_peliculas));
+                String linea = reader.readLine();
+                List<String> suggestions= new ArrayList();
+                while (linea != null) 
+                {
+                    if((linea.charAt(0)=='\t'))
+                    {
+                      linea = reader.readLine();
+                    }
+                    else
+                    {
+                        if (linea.equals(sugerencia.director_name))
+                        {
+                            linea = reader.readLine();
+                            while(linea != null&&(linea.charAt(0)=='\t'))
+                            {
+                              suggestions.add(linea.substring(1,linea.length()));
+                              linea = reader.readLine();
+                            }
+                            break;
+                        }
+                        else
+                        {
+                           linea = reader.readLine();
+                        }
+                    }
+
+
+                }
+                reader = new BufferedReader(new FileReader(archivo_principal));
+                linea = reader.readLine();
+                while(linea!=null)
+                {
+                    String[] g=linea.split(",");
+                    if (suggestions.contains(g[11]))
+                    {
+                        if (!peliculas.contains(dummie.pelicula_de_archivo(linea))&&(!sugerencia.equals(dummie.pelicula_de_archivo(linea))))
+                        {
+                            peliculas.add(dummie.pelicula_de_archivo(linea));
+                        }
+   
+                    }
+                    linea=reader.readLine();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                
+            }
+           
         }
         else
         {

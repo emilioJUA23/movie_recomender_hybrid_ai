@@ -123,6 +123,21 @@ public class Pelicula
         return t;
     
     }
+    public Boolean have_keyword(String genero)
+    {
+        Boolean t = false;
+        String[] generos = this.plot_keywords.split("\\|");
+        for (int i = 0; i < generos.length; i++) {
+            if (generos[i].equals(genero)) {
+                t = true;
+                break;
+            }
+
+        }
+        return t;
+
+    }
+    
     
     public void calificar(double[] maximos)
     {
@@ -224,5 +239,20 @@ public class Pelicula
         this.archivo_directores=archivo_directores;
         this.archivo_generos=archivo_generos;
     }
+  
+     @Override
+    public boolean equals(Object object)
+    {
+        boolean sameSame = false;
+
+        if (object != null && object instanceof Pelicula)
+        {
+            sameSame = this.movie_title.equals(((Pelicula) object).movie_title);
+        }
+
+        return sameSame;
+    }
+    
+    
     
 }
