@@ -5,11 +5,13 @@
  */
 package ai_movie_recomender;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -236,16 +238,27 @@ public class find_IT extends javax.swing.JFrame {
     Pelicula dummie = new Pelicula("","",0.0,0.0,0.0,0.0,"",0.0,0.0,"","","",0.0,0.0,"",0.0,"","",0.0,"","","",0.0,0.0,0.0,0.0,0.0,0.0);
     List<Pelicula> peliculas = new ArrayList();
     double[] maximos = new double[8];
-    String archivo_principal="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\movie_metadata_unknown_add.csv";
-    String archivo_directore="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\termometro_directores.txt";
-    String archivo_actores = "C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\termometro_actores.txt";
-    String archivo_generos ="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\TermometroGeneros.txt";
-    String archivo_directores_peliculas="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\directors_and_movies.txt";
-    String keywords_relations="C:\\Users\\LuisEmilio\\Documents\\gitrepo\\movie_recomender_hybrid_ai\\keywords_Relationship.txt";
+    List<String> already_suggest= new ArrayList();
+    String archivo_principal="\\movie_metadata_unknown_add.csv";
+    String archivo_directore="\\termometro_directores.txt";
+    String archivo_actores = "\\termometro_actores.txt";
+    String archivo_generos ="\\TermometroGeneros.txt";
+    String archivo_directores_peliculas="\\directors_and_movies.txt";
+    String keywords_relations="\\keywords_Relationship.txt";
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
             //obtencion de valores de filtrado inicial 
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(null);
+            File f = chooser.getCurrentDirectory();
+            String path =f.getAbsolutePath();
+            archivo_principal = path +archivo_principal;
+            archivo_directore=path +archivo_directore;
+            archivo_actores=path+archivo_actores;
+            archivo_generos=path+archivo_generos;
+            archivo_directores_peliculas=path+archivo_directores_peliculas;
+            keywords_relations=path+keywords_relations;
             String genero = this.tbgenero.getText();
             String color = this.tbcolor.getText();
             String director = this.tb_director.getText();
@@ -311,6 +324,7 @@ public class find_IT extends javax.swing.JFrame {
                 t=true;
                 sugerencia = peliculas.get(i);
                 peliculas.remove(i);
+                already_suggest.add(sugerencia.movie_title);
                 break;
             }
         }
@@ -318,6 +332,7 @@ public class find_IT extends javax.swing.JFrame {
         {
             sugerencia = peliculas.get(peliculas.size()-1);
             peliculas.remove(peliculas.size()-1);
+            already_suggest.add(sugerencia.movie_title);
         }
         lb_movie_title.setText(sugerencia.movie_title);
         lb_imdb_link.setText(sugerencia.movie_imdb_link);
@@ -397,7 +412,7 @@ public class find_IT extends javax.swing.JFrame {
                     String[] g=linea.split(",");
                     if (suggestions.contains(g[11]))
                     {
-                        if (!peliculas.contains(dummie.pelicula_de_archivo(linea))&&(!sugerencia.equals(dummie.pelicula_de_archivo(linea))))
+                        if (!peliculas.contains(dummie.pelicula_de_archivo(linea))&&!(already_suggest.contains(dummie.pelicula_de_archivo(linea).movie_title)))
                         {
                             peliculas.add(dummie.pelicula_de_archivo(linea));
                         }
